@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Restaurant</title>
+    <link rel="icon" href="/images/food.svg" type="image">
+    <style>
+       
+        *{
+            margin: 0px;
+        }
+        #logo{
+           
+            font-size: larger;
+            color: gainsboro;
+        }
+        #i1 {
+            margin-top: 50px;
+        }
+
+        #i2 {
+            position: absolute;
+            left: 600px;
+            margin-top: 120px;
+        }
+
+        #img1 {
+            background-size: cover;
+        }
+
+        #recipies {
+            padding: 50px;
+           
+        }
+        #footer{
+            padding: 50px;
+        }
+        #nav{
+            position: sticky;
+            top: 0;
+        }
+        /* ... Existing CSS ... */
+
+/* Cart Sidebar */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -320px; /* Initially hide the sidebar off the screen */
+    bottom: 0;
+    width: 320px;
+    background-color: white;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+}
+
+/* Show the sidebar when the 'active' class is added */
+.cart-sidebar.active {
+    right: 0;
+}
+#View-Cart-Btn{
+    position: absolute;
+    top: 600px;
+    
+}
+#pay{
+    margin-left: 80px;
+}
+#clear{
+    margin-left: 5px;
+}
+#counter{
+    user-select: none;
+    color: gainsboro;
+     height: 0.9rem;
+     width: 0.9rem;
+     background-color: #ff4754;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    font-size: 0.68rem;
+    border-radius: 50%;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    display: none;
+    text-align: center;
+    vertical-align: middle;
+}
+#number{
+    position: absolute;
+    top:8px
+    
+}
+
+
+
+#svg{
+    position: relative;
+    left: 2px;
+    
+    
+}
+
+@media only screen and (max-width:500px){
+    #logo{
+        /* display: none; */
+        margin: auto;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0px;
+        justify-content: space-evenly;
+    }
+}
+
+
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark" aria-label="Thirteenth navbar example" id="nav">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+                aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+           <p id="logo"> <img src="/images/food.png" alt="" height="30px" width="30px"> The Chinese Restaurant</p>
+            <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+                <a class="navbar-brand col-lg-3 me-0" href="#"></a>
+                <ul class="navbar-nav col-lg-6 justify-content-lg-space-around">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="restaurant.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#recipies">Recipies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#footer">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+                    <button class="btn btn-danger" id="View-cart">View cart  </button><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                    height="40" fill="white" class="bi bi-cart2" id="svg" viewBox="0 0 16 16">
+                    <path
+                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                </svg><span id="counter"><span id="number">1</span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Sidebar -->
+ <!-- For the cartSidebar -->
+ <div id="cartSidebar" class="cart-sidebar bg-dark text-white p-3">
+    <button id="closeSidebar" class="btn btn-danger btn-sm float-end me-2 mt-2">Close</button>
+    <h4 class="text-center mt-3 text-white">Cart Items</h4>
+    
+    <h5 class="text-center mt-3 text-white">Cart Items</h5>
+    <div id="Cart-Container"></div>
+    
+
+    <div class=" mb-5" id="View-Cart-Btn">
+        <form action="/checkout" method="get"><button id="clear" class="btn btn-outline-light " onclick="clearCart()" style="position: relative; top: 5%;">Clear</button> 
+     <button id="pay" class="btn btn-primary btn-block">Proceed to Pay</button></form>
+    </div>
+</div>
+
+
+
+
+
+
+    <!-- hero -->
+    <div class="container col-xxl-8 px-4 py-3">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="/images/hero.webp" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Exploring the World of Gastronomy:</h1>
+            <p class="lead">Food is more than just sustenance; it is a universal language that transcends borders and cultures, bringing people together in joyous celebration and unforgettable experiences. The world of gastronomy is a mesmerizing tapestry of flavors, textures, and aromas, woven together by centuries of culinary traditions and innovation. Join us on a delectable journey as we explore the diverse and delightful world of food.</p>
+          </div>
+        </div>
+      </div>
+
+
+  
+
+
+
+
+    <section id="recipies">
+        <center><h2>RECIPIES</h2></center><br><br>
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bm9vZGxlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                    class="img-fluid" alt="..." style=" height: 200px; width: 200px;"><br><br>
+                <h2 class="fw-normal" id="Noodles">NOODLES</h2>
+                <p>Nestled within the vibrant cityscape, the Chinese restaurant stands as a beacon of authentic flavors and rich culinary traditions. From the moment one steps through its ornate doors, an immersive experience unfolds</p>
+                 <div   style="margin-bottom: 10px; font-weight:450;">Price <span style="position: relative; left: 50px; font-weight: 600; " id="Noodles-price" > $5.00</span> </div> 
+         
+         <p><a class="btn btn-danger" onclick="AddCart('NOODLES','5')" id="add-animation">Add to cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+           </svg></a></p>
+
+
+            
+            </div>
+            <div class="col-lg-4">
+                <img src="https://images.unsplash.com/photo-1670300522639-ce378e5d23a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1vbW98ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60"
+                    class="img-fluid" alt="..." style=" height: 200px; width: 200px;"><br><br>
+                <h2 class="fw-normal" id="Momos">MOMOS</h2>
+                <p>Momos, a beloved street food delicacy hailing from the breathtaking landscapes of the Himalayas, have found their way into the hearts and palates of food enthusiasts worldwide. These bite-sized dumplings,</p>
+                <div   style="margin-bottom: 10px; font-weight:450;">Price <span style="position: relative; left: 50px; font-weight: 600;" id="Momos-price"> $8.00</span> </div>
+              
+<p><a class="btn btn-danger AddCart" onclick="AddCart('MOMOS','8')" id="add-animation">Add to cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+</svg></a></p>
+
+
+                
+            </div>
+            <div class="col-lg-4">
+                <img src="https://images.unsplash.com/photo-1543340904-991f3751a30f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"
+                    class="img-fluid" alt="..." style="height: 200px; width: 200px;"><br><br>
+                <h2 class="fw-normal" id="KPC">KUNG PAO CHICKEN</h2>
+                <p> A classic Sichuan dish, featuring tender chunks of chicken stir-fried with peanuts, vegetables, and a spicy, savory sauce.and palates of food enthusiasts worldwide. These bite-sized dumplings</p>
+                <div   style="margin-bottom: 10px; font-weight:450;">Price <span style="position: relative; left: 50px; font-weight: 600;" id="KPC-price"> $10.00</span> </div>
+               <!-- ... Existing HTML ... -->
+<p><a class="btn btn-danger AddCart"onclick="AddCart('KUNG PAO CHICKEN','10')"id="add-animation" >Add to cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+</svg></a></p>
+<!-- ... Existing HTML ... -->
+
+           
+            
+            </div><!-- /.col-lg-4 -->
+        </div>
+
+    <br><br>
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGVraW5nJTIwZHVja3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                    class="img-fluid" alt="..." style=" height: 200px; width: 200px;"><br><br>
+                <h2 class="fw-normal" id="PD">PEEKING DUCK</h2>
+                <p>A famous Beijing specialty, Peking duck is roasted to perfection, with crispy skin served alongside thin pancakes, scallions, cucumber</p>
+                <div   style="margin-bottom: 10px; font-weight:450;">Price <span style="position: relative; left: 50px; font-weight: 600;" id="PD-price"> $6.50</span> </div>
+               <!-- ... Existing HTML ... -->
+<p><a class="btn btn-danger AddCart" onclick="AddCart('PEEKING DUCK','6.5')"id="add-animation">Add to cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+</svg></a></p>
+<!-- ... Existing HTML ... -->
+
+            
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img src="https://images.unsplash.com/photo-1626202378343-1e8b2a828a78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Q2hvdyUyME1laW58ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60"
+                    class="img-fluid" alt="..." style=" height: 200px; width: 200px;"><br><br>
+                <h2 class="fw-normal" id="CM">CHOW MEIN</h2>
+                <p>A stir-fried noodle dish often made with egg noodles, vegetables, and a choice of meat or seafood, seasoned with a savory sauce.</p>
+                <div  style="margin-bottom: 10px; font-weight:450;">Price <span style="position: relative; left: 50px; font-weight: 600;" id="CM-price"> $10.00</span> </div>
+                <!-- ... Existing HTML ... -->
+<p><a class="btn btn-danger AddCart"onclick="AddCart('CHOW MEIN','10')"id="add-animation">Add to cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+</svg></a></p>
+<!-- ... Existing HTML ... -->
+
+                
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NXx5b0pNakFTbFhpNHx8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60"
+                    class="img-fluid" alt="..." style=" height: 200px; width: 200px;"><br><br>
+                <h2 class="fw-normal" id="MT">MAPO TAFO</h2>
+                <p>A signature Sichuan dish featuring soft tofu cubes in a spicy and numbing chili bean sauce, usually accompanied by minced meat.</p>
+                <div   style="margin-bottom: 10px; font-weight:450;">Price <span style="position: relative; left: 50px; font-weight: 600;" id="MT-price"> $15.00</span> </div>
+           
+<p><a class="btn btn-danger AddCart"onclick="AddCart('MAPO TAFO','15')"id="add-animation">Add to cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+</svg></a></p>
+
+
+            
+            </div><!-- /.col-lg-4 -->
+        </div>
+
+    </section>
+    <section id="footer">
+
+        <footer class="py-5">
+            <div class="row">
+              <div class="col-6 col-md-2 mb-3">
+                <h5>ABOUT</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Who we are</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">blog</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Work with us</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Contact us</a></li>
+                </ul>
+              </div>
+        
+              <div class="col-6 col-md-2 mb-3">
+                <h5>RESTAURANTS</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"></a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Partner with us</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Apps for you</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                  
+                </ul>
+              </div>
+        
+              <div class="col-6 col-md-2 mb-3">
+                <h5>ENTERPRISES</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary"></a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Hyperpure</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Feeding India</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Report Fraud</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Contact us</a></li>
+                </ul>
+              </div>
+        
+              <div class="col-md-5 offset-md-1 mb-3">
+                <form method="get" action="/LoginSubmit">
+                  <h5>SUBSCRIBE TO OUR SPECIAL <span style="text-decoration: underline;">DEALS!</span></h5>
+                  <p></p>
+                  <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                    <label for="newsletter1" class="visually-hidden">Email address</label>
+                    <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                    <button class="btn btn-primary" type="button">SUBSCRIBE</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+        
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+              <p>© 2023 Company, Inc. All rights reserved.</p>
+              <ul class="list-unstyled d-flex">
+                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+              </ul>
+            </div>
+          </footer>
+
+
+
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+        
+  document.addEventListener("DOMContentLoaded", function () {
+    const cartSidebar = document.getElementById("cartSidebar");
+    const viewCartButton = document.getElementById("View-cart");
+    const closeSidebarButton = document.getElementById("closeSidebar");
+    
+
+    // Function to open the cart sidebar
+    function openCartSidebar() {
+      cartSidebar.classList.add("active");
+    }
+
+    // Function to close the cart sidebar
+    function closeCartSidebar() {
+      cartSidebar.classList.remove("active");
+    }
+
+    // Event listener for the "View cart" button
+    viewCartButton.addEventListener("click", openCartSidebar);
+
+    // Event listener for the "Close" button inside the cart sidebar
+    closeSidebarButton.addEventListener("click", closeCartSidebar);
+
+    // Add click event listeners to all "Add to cart" buttons
+  })
+var Products=[];
+
+let count=1;
+function AddCart(ItemName,Cost){
+  var counter= document.getElementById("counter");
+  counter.innerHTML=count;
+  counter.style.display = "block";
+  count++;
+  Products.push({Item:ItemName,Price:Cost});
+  UpdateCart();
+}
+function UpdateCart(){
+  var cartContainer=document.getElementById("Cart-Container");
+  cartContainer.innerHTML="";
+  let totalAmount=0;
+  Products.forEach(item =>{
+    totalAmount +=parseFloat(item.Price);
+    cartContainer.innerHTML+=`<div class="cart-item" style="display:flex; justify-content:space-between;">
+                                    <span >${item.Item}</span>
+                                    <span class="cart-price" >$${item.Price}</span>
+                              </div>`;
+  });
+
+  cartContainer.innerHTML+=`<div class="cart-item  cart-total" style="margin-top:20px">
+                                   <span><strong><center>Total:<strong></span>
+                                   <span class="cart-price">$${totalAmount}</center></span>
+                            </div>`;
+}
+function clearCart(){
+  Products.length=0;
+  UpdateCart();
+}
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="/images/food.svg" type="image">
+    <style>
+        body{
+            margin: 0;
+            box-sizing: 0;
+            display: flex;
+            font-family: monospace;
+        }
+        .image-container{
+            height: 100vh;
+            width: 65vw;
+            background-image: url(/images/login-bg.webp);   
+            background-size: cover;   
+            background-position: 29%;  
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .restaurant-name{
+            display: flex;
+            align-items: center;
+            position: relative;
+            left: 15%;
+            flex-direction: column;
+        }
+        .restaurant-name h1{
+           
+           font-size: 3.5vw;
+           letter-spacing: 2px;
+        }
+        .qoute{
+            background-color: black;
+            color: white;
+            font-size: 1.5vw;
+            padding: 8px;
+            border-radius: 20px;
+        }
+        .signup-box{
+            height: 100vh;
+            width: 35vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+        
+        }
+        .signup-card{
+            width: 25vw;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+            display: flex;
+            align-items: center;
+            justify-content:space-evenly;
+            flex-direction: column;
+            padding: 40px 20px 40px 20px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: 2px;
+        }
+        input{
+            border: 0;
+            border-bottom: 1px solid gray;
+            outline: 0;
+        }
+        button{
+            height: 4vh;
+            background-color: #00aeff;
+            border: none;
+            color: whitesmoke;
+            font-size: 17px;
+        }
+        .alert{
+            background-color:rgb(252, 220, 224);
+           padding: 2px;
+           color: rgba(144, 25, 30);
+           border-radius: 25px;
+       }
+       
+       
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        <div class="signup-card">
+            <div class="alert">
+                <%=alert%>
+            </div>
+            
+           <h1>Login Now</h1>
+           <form method="get"action="/LoginSubmit">
+              
+            <input type="email" placeholder="E-Mail" name="Email"><br>
+            <input type="password" placeholder="Password" name="Password"><br>
+            <button type="">Login</button>
+            <h4>Don't have an account <a href="/signup">sign-up</a></h4>
+          </form>
+        </div>
+ </div>
+    <div class="image-container">
+          <div class="restaurant-name">
+            <h1>THE <span style="color: green;">CHINESE</span> RESTAURANT</h1>
+            <div class="qoute" >Have a sip, survive the work week</div>
+          </div>
+         
+    </div>
+   
+    
+</body>
+</html>

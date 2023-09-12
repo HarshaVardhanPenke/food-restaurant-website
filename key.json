@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "project-vedic",
+  "private_key_id": "72f401cf6360ad352c4e2d10c34fd745cfdf67a3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCVeIEKcvw4MxhX\nZNhBCkPTTs8W1HWe38r7FvuBjxsiv0MO/E38jskAAUyuDRCtRcTRWUoj0rbBong1\nAuRgbqfCW6M5Tl0PuN/NIY4xcgZd+cbbRRzMpV2OVugpFPLNE2eGupWTcIEQKSA7\nNIhAjkAUkDJOGJetYFMTfE81se/YC/ztNU3zasmzfWp3DTrzgXXzeIBnG5XKTC6/\nwNkxljzFK+g9xcQY6D6ACUgEjDm2h+tMA43SdEPeiWTen/JZ2yNkqX0lgt+Y+8f4\ncynxdljcQk7uEUhvY/7aoTWFWL6nbIpv8VZyiHvf8Bfdrq423avWCntwBEfNKM4V\nxg3bS1G1AgMBAAECggEACy+L9KS7RFdqjGvDFUb34XHl5I78yGl2DslfBAiaHsUS\ndyYhjfN/jk0KmIHozBbLDmGwvzKPM7l9ZnYzchYF3vEtq2W2aC1NLlRDCGdAm7rM\nC2/GIniDolnVoPFs5DT+C+Kdu/1w4y04uMWLJs2edQt/gEGt5C8vuGcWpG2PBetu\neGr1ehUP4uwkS5lEM8NDerN578bBR3OIOIFOcUowx3V6sssuL25WLvASUefAbP67\n5Dp8MCMXtNOriE71SQ1KnAu3wCmDxIuswm7b5HUZH+/ZW6gNWPLcBPn2lcUBAc3b\nbkZcMOBsNbk6Uxzw0ATdpRPnVGVODXCpVeaJirdMFwKBgQDEgEJf7ZsNmRlD9xee\nc5gaKVO8lxrpK3HgTJ23EaKscc11oDDLQXFrHC1u6gwYYW56Ln6mfvwhL9Qz4d3n\n3uuOxOy0uEDuc6dpTY69ES0QmjhSB9qbmLqma3ugP7PAF3n9DD8zuNAjY8e/EzSx\ndQKDcuXKDPBCUd33TXSkYU0ZiwKBgQDCurMz6Yt2eSCR70rVUIS8fIDBPd4DOwky\nSZz2t8/AyGGLk9p/3o/Sdllrpc96eNHiwAPFzylThFSOV7zeWN+S4kV/VMoZ9fAO\nsjhDQjVQCJJPmuXmcBVrwW+saMS3OBS6oyb0SK6Agy5s3nQ/4nhJxSqsnxkCSOk+\nDQq9hsopvwKBgQDAMgc51qhSy41HydXDOKLr68Iocs9ygvjV/3o/hjNLYeApDa7M\nD02FC0Fw++Eqs5mgTfu4k/m96A8xU9l9Iq/Zq8kuFg4EbQCw4ZgcW0FtvLobmez7\nRY5CmlyH5+bDmvLJTAJBb6G9C6pivMFMVPtJYMdbMf6Jj5OAgLT21ujXcwKBgQCj\nwO1CEnu9PU8uadS8XeHBv9Fmr+grP1IUf+MHdru2msus3ME6FqdLjUrVQ7Keg0u9\nK0wA5J0UJowUx6OEN6iLlMxsr5jlC/S75xN5PAwpKYwgdVov1sGsxBZtHg2PJhII\ngXsYoqZcW/SGiOupbYFKSAwC7ifRzA6Yp88IYnlPcQKBgG1dh6M4vOrsRJgPLqUG\n5mZPwV/gQ0yh/YXSvkjdKf9CPz0RIZaig4ijENCQmW8JJeHmvDbtUS66fnG5uWBi\nCHYcizp+3xaLWtr5xT+Cnw6/ihnXe/rLLhGPRSqofv0R/vkO8JcTm3NuWoUkzDEn\n/ATjseU6ok+Ju0Mf40XBsaeJ\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-o0qkr@project-vedic.iam.gserviceaccount.com",
+  "client_id": "118334612053245367548",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-o0qkr%40project-vedic.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

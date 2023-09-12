@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="icon" href="food.svg" type="image">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container{
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+        <h2>Add a new address</h2>
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label" >First name</label>
+                <input type="text" class="form-control" id="inputFirst4" required>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="inputlast4" required>
+            </div>
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Address 1</label>
+                <input type="text" class="form-control" id="inputAddress1" placeholder="1234 Main St" required>
+            </div>
+            <div class="col-12">
+                <label for="inputAddress2" class="form-label" >Address 2</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" required>
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label" >City</label>
+                <input type="text" class="form-control" id="inputCity" required>
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>Andhra pradesh</option>
+                    <option>Telanga</option>
+                    <option>Goa</option>
+                    <option>Kerala</option>
+                    <option>Tamil nadu</option>
+                    <option>Bihar</option>
+                    <option>Assam</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Zip code</label>
+                <input type="text" class="form-control" id="inputZip">
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-danger" onclick="Address()">Use this address</button>
+            </div>
+        </form>
+ 
+    <div class="payment">
+        <form class="needs-validation" novalidate="" method="get" action="/done">
+            <hr class="my-4">
+
+            <h4 class="mb-3">Payment</h4>
+
+            <div class="my-3">
+                <div class="form-check">
+                    <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked=""
+                        required="" >
+                    <label class="form-check-label" for="credit">Credit card</label>
+                </div>
+                <div class="form-check">
+                    <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
+                    <label class="form-check-label" for="debit">Debit card</label>
+                </div>
+                <div class="form-check">
+                    <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
+                    <label class="form-check-label" for="paypal">PayPal</label>
+                </div>
+            </div>
+
+            <div class="row gy-3">
+                <div class="col-md-6">
+                    <label for="cc-name" class="form-label">Name on card</label>
+                    <input type="text" class="form-control" id="cc-name" placeholder="" required=""
+                        >
+                    <small class="text-body-secondary">Full name as displayed on card</small>
+                    <div class="invalid-feedback">
+                        Name on card is required
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="cc-number" class="form-label">Credit card number</label>
+                    <input type="text" class="form-control" id="cc-number" placeholder="" required=""
+                        >
+                    <div class="invalid-feedback">
+                        Credit card number is required
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="cc-expiration" class="form-label">Expiration</label>
+                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required=""
+                       >
+                    <div class="invalid-feedback">
+                        Expiration date required
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="cc-cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required=""
+                       >
+                    <div class="invalid-feedback">
+                        Security code required
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit" ">Place Order</button>
+        </form>
+
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        
+       
+    
+        
+    
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+         
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+   
+})()
+
+
+    </script>
+</body>
+
+</html>
