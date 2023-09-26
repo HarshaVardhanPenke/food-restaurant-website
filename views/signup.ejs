@@ -84,6 +84,46 @@
             color: rgba(144, 25, 30);
             border-radius: 25px;
         }
+        @media only screen and (max-width:500px) {
+            body{
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                width: 100vw;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: space-evenly;
+                gap: 10px;
+            }
+            .image-container{
+                background-image: none;
+               width: 100vw;
+            }
+            .signup-box{
+                box-shadow: rgba(0, 0, 0, 0.5) 0px 18px 50px -10px;
+                width: 75vw;
+            }
+            .signup-card{
+                width: 65vw;
+            }
+            .restaurant-name h1{
+           text-align: center;
+           font-size: 5.5vw;
+           letter-spacing: 2px;
+        }
+        /* .restaurant-name{
+            left: 0;
+          
+        } */
+        .qoute{
+            background-color: black;
+            color: white;
+            font-size: 2.5vw;
+            padding: 8px;
+            border-radius: 20px;
+        }
+        }
     </style>
 </head>
 <body>
@@ -98,7 +138,7 @@
            <div class="signup-card">
             <div class="alert"><%=alert%></div>
               <h1>Create an account</h1>
-              <form method="get"action="/SignupSubmit">
+              <form method="post"action="/SignupSubmit">
                     <input type="text" placeholder="Name" name="Fullname" required></span><br>
                    <input type="email" placeholder="E-Mail" name="Email" required><br>
                   <input type="password" placeholder="Password" name="Password" required><br>

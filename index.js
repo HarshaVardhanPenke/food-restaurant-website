@@ -57,57 +57,65 @@ app.get('/done',(req,res)=>{
   
 
 
+app.post('/SignupSubmit', async (req, res) => {
+  const name = req.body.Fullname;
+  const email = req.body.Email;
+  const password = req.body.Password;
 
-//signup page
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-app.get('/SignupSubmit', async(req, res) => {
-  const name=req.query.Fullname;
-  console.log(name);
-  const email = req.query.Email;
-  const password = req.query.Password;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  db.collection('signup')
-    .where("Email", "==", email)
-    .where("Password", "==", password)
-    .get()
-    .then((docs) => {
-      if (docs.size > 0) {
-        const alert = "You already have an Account.Please Login";
-        res.render("signup.ejs",{alert});
-        
-      } else {
-        db.collection('signup').add({
-          Fullname: req.query.Fullname,
-          Email: email,
-          Password: password
-        }).then(() => {
-          res.redirect("/login");
-        });
-      }
-    })
- 
+    const result = await db.collection('signup')
+      .where("Email", "==", email)
+      .get();
+
+    if (!result.empty) {
+      const alert = "You already have an account. Please Login.";
+      return res.render("signup.ejs", { alert });
+    }
+
+    await db.collection('signup').add({
+      Fullname: name,
+      Email: email,
+      Password: hashedPassword
+    });
+
+    res.redirect("/login");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred while processing your request.");
+  }
 });
 
 
 
-app.get('/LoginSubmit', (req, res) => {
-  
+
+app.post('/LoginSubmit', (req, res) => {
+  const email = req.body.Email;
+  const password = req.body.Password;
+
   db.collection('signup')
-  .where("Email","==",req.query.Email)
-  .where("Password","==",req.query.Password)
-  .get()
-  .then((docs)=>{
-    if(docs.size>0){
-      res.redirect("/restaurant-dashboard")
-    }
-    else{
-      const alert="Invalid E-Mail or Password";
-      res.render("login.ejs",{alert});
-    }
-    console.log(docs.size);
+    .where("Email", "==", email)
+    .get()
+    .then((docs) => {
+      if (docs.size > 0) {
+        
+        const user = docs.docs[0].data();
+        bcrypt.compare(password, user.Password, (err, result) => {
+          if (result) {
+            res.redirect("/restaurant-dashboard");
+          } else {
+            const alert = "Invalid E-Mail or Password";
+            res.render("login.ejs", { alert });
+          }
+        });
+      } else {
+        const alert = "Invalid E-Mail or Password";
+        res.render("login.ejs", { alert });
+      }
     });
-  });
-  
+});
+
 
 app.get('/restaurant-order',(req,res)=>{
   res.redirect("/menu-order");
