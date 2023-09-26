@@ -7,13 +7,16 @@
     <link rel="icon" href="/images/food.svg" type="image">
     <style>
         body{
+            height: 100vh;
+            width: 100vw;
             margin: 0;
             box-sizing: 0;
-            display: flex;
+           display: flex;
             font-family: monospace;
+           
         }
         .image-container{
-            height: 100vh;
+           
             width: 65vw;
             background-image: url(/images/login-bg.webp);   
             background-size: cover;   
@@ -42,7 +45,7 @@
             border-radius: 20px;
         }
         .signup-box{
-            height: 100vh;
+          
             width: 35vw;
             display: flex;
             align-items: center;
@@ -52,7 +55,7 @@
         }
         .signup-card{
             width: 25vw;
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 18px 50px -10px;
             display: flex;
             align-items: center;
             justify-content:space-evenly;
@@ -83,11 +86,64 @@
            color: rgba(144, 25, 30);
            border-radius: 25px;
        }
-       
+     
+       .name-sd{
+           display: none;
+       }
+       @media only screen and (max-width:500px){
+          body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+           align-items: center;
+            justify-content: center;
+           gap: 10px;
+           
+            
+          }
+         
+         
+          .image-container{
+            display:none;
+          }
+          .signup-box{
+            width: auto;
+          }
+          .signup-card{
+            width: 65vw;
+          }
+          .name-sd{
+            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .restaurant-name h1{
+           text-align: center;
+           font-size: 5.5vw;
+           letter-spacing: 2px;
+        }
+        .restaurant-name{
+            left: 0;
+        }
+        .qoute{
+            background-color: black;
+            color: white;
+            font-size: 2.5vw;
+            padding: 8px;
+            border-radius: 20px;
+        }
+       }
        
     </style>
 </head>
 <body>
+   
+    <div class="name-sd"><div class="restaurant-name">
+        <h1>THE <span style="color: green;">CHINESE</span> RESTAURANT</h1>
+        <div class="qoute" >Have a sip, survive the work week</div>
+      </div></div>
     <div class="signup-box">
         <div class="signup-card">
             <div class="alert">
@@ -111,7 +167,7 @@
           </div>
          
     </div>
-   
+
     
 </body>
 </html>

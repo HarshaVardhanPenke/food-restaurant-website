@@ -7,7 +7,7 @@ app.set('view engine','ejs');
 const { initializeApp, cert } = require('firebase-admin/app');
 const { getFirestore} = require('firebase-admin/firestore');
 var serviceAccount = require("./key.json");
-
+const bcrypt = require('bcrypt');
 
 var serviceAccount = require("./key.json");
 initializeApp({
@@ -60,12 +60,12 @@ app.get('/done',(req,res)=>{
 
 //signup page
 
-app.get('/SignupSubmit', (req, res) => {
+app.get('/SignupSubmit', async(req, res) => {
   const name=req.query.Fullname;
   console.log(name);
   const email = req.query.Email;
   const password = req.query.Password;
-
+  const hashedPassword = await bcrypt.hash(password, 10);
   db.collection('signup')
     .where("Email", "==", email)
     .where("Password", "==", password)
