@@ -69,7 +69,9 @@
     margin-left: 80px;
 }
 #clear{
-    margin-left: 5px;
+    margin-top: -50px;
+    margin-bottom: 10px;
+    margin-left: 110px;
 }
 #counter{
     user-select: none;
@@ -147,7 +149,7 @@
                     height="40" fill="white" class="bi bi-cart2" id="svg" viewBox="0 0 16 16">
                     <path
                         d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                </svg><span id="counter"><span id="number">1</span></span>
+                </svg><span id="counter"><span id="number">0</span></span>
                 </div>
             </div>
         </div>
@@ -165,7 +167,7 @@
     
 
     <div class=" mb-5" id="View-Cart-Btn">
-        <form action="/checkout" method="get"><button id="clear" class="btn btn-outline-light " onclick="clearCart()" style="position: relative; top: 5%;">Clear</button> 
+        <button id="clear" class="btn btn-outline-light " onclick="clearCart()" style="position: relative; top: 5%;">Clear</button><form action="/checkout" method="get"> 
      <button id="pay" class="btn btn-primary btn-block">Proceed to Pay</button></form>
     </div>
 </div>
@@ -388,6 +390,7 @@ function AddCart(ItemName,Cost){
   counter.style.display = "block";
   count++;
   Products.push({Item:ItemName,Price:Cost});
+ 
   UpdateCart();
 }
 function UpdateCart(){
@@ -410,6 +413,7 @@ function UpdateCart(){
 function clearCart(){
   Products.length=0;
   UpdateCart();
+  document.getElementById("counter").innerHTML="";
 }
 
 
